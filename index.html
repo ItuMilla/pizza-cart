@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.CSS">
+  <script src="//unpkg.com/alpinejs" defer></script>
+
+</head>
+
+<body>
+
+    <div class="container" x-data="{ 
+        showCart: false, 
+        small_pizzaTotal : 0.00,
+        small_pizzaQty : 0,
+        medium_pizzaTotal : 0.00,
+        medium_pizzaQty : 0,
+        large_pizzaTotal : 0.00, 
+        large_pizzaQty : 0,
+        cartTotal : 0.00, 
+
+        buySmall_pizza() {
+            this.small_pizzaTotal += 69.90;
+            this.small_pizzasQty +=1
+        },
+        clearSmall_pizza() {
+            if (this.small_pizzaQty > 0) {
+                this.small_pizzaTotal -= 69.90;
+                this.small_pizzaTotal -=1
+            }
+        },
+       cartTotal() {
+        return this.small_pizzaTotal + this.medium_pizzaTotal + this.large_pizzaTotal;
+        },
+        totalQty() {
+        return this.small_pizzaQty + this.medium_pizzaQty + this.large_pizzaQty  
+        }
+    }">
+		<div class="header" style="background-color:rgb(30, 255, 68) ">
+			<div class="f3">
+                <h1>Perfect Pizza</h1>
+
+            <img src="Images/Small.png" alt="" width="40">
+            <img src="Images/Medium.png" alt="" width="40">
+            <img src="Images/Large.png" alt="" width="40">
+
+            <small>Inpired by <a href="https://itumilla.github.io/personal-webpage/">perfect-pizza</a> </small>
+            </div>
+
+			<div class="f1" >
+
+            <button x-on:click="showCart=true" ><img src="shopping-icon.png" width="30" alt="">show cart </button>
+			<strong x-show="totalQty() > 0"><span x-text="text=totalQty()"></span> pizzas in the cart.</strong>	
+				<!-- <span>0.00</span> -->
+			</div>
+		</div>
+
+		<div class="cart-box">
+            <div class="cart"x-show="showCart">
+            </div>
+            <button x-on:click="showCart=false" ><img src="shopping-icon.png" width="30" alt="">close cart </button>
+            </div>
+			
+				<div class="cart">
+					<h2>Cart
+						<img src="shopping-icon.png" width="30" alt="">
+					</h2>
+				</div>
+
+				<table  style="background-color:rgb(30, 255, 68)">
+					<tr>
+						<td>small_pizza</td>
+						<td>
+                            <span x-text="small_pizzaQty" ></span>
+							<button x-on:click="small_pizza" x-show="small_pizzaQty > 0">+</button>
+							<button x-on:click="small_pizza" x-show="small_pizzaQty > 0" >-</button>
+						</td>
+						<td>
+                          R<span x-tex="small_pizzaTotal.toFixed(2)"></span>
+                        </td>
+					</tr>
+					<tr>
+						<td>medium_pizza</td>
+						<td>
+                            <span x-text="medium_pizzaQty" ></span> 
+							<button x-on:click="medium_pizza" x-show="medium_pizzaQty > 0">+</button>
+							<button x-on:click="medium_pizza" x-show="medium_pizzaQty > 0" >-</button>
+						</td>
+						<td>
+                            R<span x-tex="medium_pizzaTotal.toFixed(2)"></span> 
+                        </td>
+					</tr>
+					<tr>
+						<td>large_pizza</td>
+						<td>
+                            <span x-text="large_pizzaQty" ></span>
+							<button x-on:click="large_pizza" x-show="large_pizzaQty > 0">+</button>
+							<button x-on:click="large_pizza" x-show="large_pizzaQty > 0" >-</button>
+						</td>
+						<td>
+                        R<span x-text="large_pizzaTotal.toFixed(2)"></span>
+                    </td>
+					</tr>
+					<tr>
+						<td colspan="2">Total</td>
+						<td x-text="cartTotal"></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+
+							<div class="message" >Message...</div>
+							<div>
+								<label for="">Payment amount</label>
+								<input class="input" type="number" placeholder="Payment amount" >
+							</div>
+
+						</td>
+						<td>
+							<button class="btn" >
+								<img src="shopping-icon.png" width="20" alt=""> 
+								Buy</button>
+						</td>
+					</tr>
+				</table>
+
+<div class="pizzas">
+
+    <div class="small_pizza" style="background-color: mediumvioletred">
+            <img src="Images/Small.png" alt="">
+            <h2>Small Pizza</h2>
+            <h3>R69.90</h3>
+            <button class="buy btn" x-on:click="small_pizzaTotal += 69.90; small_pizzaQty +=1" >
+                <img src="Images/Small.png" alt="" width="20" >
+            Buy</button>
+
+            <div>
+                Small Pizza with 3 toppings. 1 meat topping. 3 or less other toppings.
+            </div>
+        </div>
+
+    <div class="medium_pizza" style="background-color: blueviolet">
+      <img src="Images/Medium.png" alt="">
+          <h2>Medium Pizza</h2>
+            <h3>R 120.90</h3>
+            <button class="buy btn" x-on:click="medium_pizzaTotal += 120.90; medium_pizzaQty +=1" >
+                <img src="Images/Medium.png" alt="" width="20" >
+            Buy</button>
+
+            <div>
+                Medium margeritha pizza with 3 toppings max. 2 or less meat topping. 3 or less other toppings.
+            </div>
+        </div>
+
+    <div class="large_pizza" style="background-color: brown">
+      <h2>Large Pizza</h2>
+      <img src="Images/Large.png" alt="">
+        <h3>R 199.90</h3>
+        <button class="buy btn" x-on:click="large_pizzaTotal += 199.90; large_pizzaQty +=1" >
+            <img src="Images/Large.png" alt="" width="20" >
+        Buy</button>
+
+        <div>
+        Large margeritha pizza with 3 toppings max. 3 meat toppings max. 3 or less other toppings.
+      </div>
+    </div>
+    </div>
+
+<div class="footer" style="background-color: rgb(165, 42, 128)">
+  <div class="contact_us">
+    <h1>Contact Details</h1>
+    Contact us at: (021)-541-1000 twitter
+    /fb
+    /insta
+    @perfectpizza
+    <div> 
+    Address :
+    6 Cecil street
+      Meredale
+      20001
+      </div>
+    </div>
+  </div>
+</div>
+  
+</body>
+
+</html>
