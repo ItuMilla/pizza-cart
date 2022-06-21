@@ -8,14 +8,14 @@
 
 {
     "id" : 2,
-    "name": "medium-pizza",
+    "name": "medium_pizza",
     "price" : 120.90,
     "image" : "Images/Medium.png"
 },
 
 {
     "id" : 3,
-    "name": "large-pizza",
+    "name": "large_pizza",
     "price" : 199.90,
     "image" : "Images/Large.png"
 }
