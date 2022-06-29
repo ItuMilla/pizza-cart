@@ -78,6 +78,31 @@ background-color: blueviolet;
 margin: 1em;
 border-radius: 1em;
 }
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+td {
+    text-align: center;
+    vertical-align: bottom;
+    /* height: 50px; */
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ccc;
+
+}
+
+.f1 {
+    flex: 1
+}
+
+.f3 {
+    flex: 3;
+}
 
 /*h1 {
     padding: 1em;
@@ -122,7 +147,6 @@ background-color: yellowgreen;
 .cart-box {
     display: flex;
     justify-content: flex-end;
-
 }
 
 /*.cart-link {
@@ -133,15 +157,6 @@ background-color: yellowgreen;
     display: none;
 }
 
-
-.cart {
-    background-color: yellowgreen;
-    /* margin: 0.5em; */
-    padding: 1em;
-    width: 100%;
-    margin-top: -10em;
-    border-radius: 0.5em;
-}
 
 table {
     background-color:lightskyblue;
@@ -222,11 +237,4 @@ td {
     font-weight: bold;
     border: 0;
     cursor: pointer; */
-}
-.cart {
-    background-color: yellowgreen; 
-    /* padding: 1em; */
-    width: 25%;
-    /* margin-top: -10em; */
-    /* border-radius-bottom: 1em; */
 }
