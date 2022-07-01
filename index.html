@@ -78,8 +78,13 @@
            },3000);
         
            } else {
-            this.paymentMessage ='Payment Failed!'
-           }
+            this.paymentMessage ='Insuficient Fund!'
+
+            setTimeout(() => {
+                this.clearCart()
+                this.payNow = false;
+               },3000);
+            }
            
         },
         cartTotal(){
@@ -119,42 +124,37 @@
                 </div>
                 <button x-on:click="showCart=false"><img src="./Images/shopping-icon.png" width="30" alt="">close cart
                 </button>
-            </div>
-
-            <div class="cart">
-                <h2>Perfect Pizza</h2>  
+            </div>  
 
             </div>
             <table>
-                <tr>
-                    <td colspan="3"></td>
-                </tr>
-                <tr>
+            
+                <tr x-show="smallQty >0">
                     <td> small_Pizza</td>
                     <td><button x-on:click="smallQty++"> +</button>
                         <button x-on:click="smallQty--"> -</button>
                     </td>
                     <td>R <span x-text="(60.90*smallQty).toFixed(2)"></span></td>
                 </tr>
-                <tr>
+                <tr x-show="mediumQty >0">
                     <td> medium_Pizza</td>
                     <td><button x-on:click="mediumQty++"> +</button>
                         <button x-on:click="mediumQty--"> -</button>
                     </td>
                     <td>R <span x-text="(120.90*mediumQty).toFixed(2)"></span></td>
                 </tr>
-                <tr>
+                <tr x-show="largeQty >0">
                     <td> large_Pizza</td>
                     <td><button x-on:click="largeQty++"> +</button>
                         <button x-on:click="largeQty--"> -</button>
                     </td>
                     <td>R <span x-text="(199.90*largeQty).toFixed(2)"></span></td>
                 </tr>
-                <tr>
+                <tr x-show="tatolQty >0">
                     <td colspan="2"> Total price</td>
                     <td>R <span x-text="((60.90*smallQty)+(120.90*mediumQty)+(199.90*largeQty)).toFixed(2)"></span></td>
                 </tr>
-                <tr>
+                <tr x-show="tatolQty >0">
                     <td colspan="2">
                         <div x-show="payNow">
                             <div class="message" x-text="paymentMessage"> message....</div>
@@ -188,7 +188,7 @@
                 <img src="Images/Small.png" width="100">
                 <div>
                     <h3>R 69.90</h3>
-                    <button class="buybtn" x-on:click="buySmall()">
+                    <button class="buybtn" x-on:click="buySmall">
                         <img src="Images/Large.png" width="20" alt="">Buy</button>
                     <div>Small Pizza with 3 toppings. 1 meat topping. 3 or less other toppings.</div>
                 </div>
