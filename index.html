@@ -120,13 +120,11 @@
             </div>
 
             <div class="cart-box">
-                <div class="cart">
+                <div class="cart" >
                 </div>
                 <button x-on:click="showCart=false"><img src="./Images/shopping-icon.png" width="30" alt="">close cart
                 </button>
             </div>  
-
-            </div>
             <table>
             
                 <tr x-show="smallQty >0">
@@ -150,11 +148,11 @@
                     </td>
                     <td>R <span x-text="(199.90*largeQty).toFixed(2)"></span></td>
                 </tr>
-                <tr x-show="tatolQty >0">
+                <tr x-show="totalQty >0">
                     <td colspan="2"> Total price</td>
                     <td>R <span x-text="((60.90*smallQty)+(120.90*mediumQty)+(199.90*largeQty)).toFixed(2)"></span></td>
                 </tr>
-                <tr x-show="tatolQty >0">
+                <tr x-show="cartTotal()>0">
                     <td colspan="2">
                         <div x-show="payNow">
                             <div class="message" x-text="paymentMessage"> message....</div>
@@ -179,7 +177,8 @@
                 </tr>
 
             </table>
-        </div>
+
+            </div>
 
         <div class="pizzas">
 
@@ -188,7 +187,7 @@
                 <img src="Images/Small.png" width="100">
                 <div>
                     <h3>R 69.90</h3>
-                    <button class="buybtn" x-on:click="buySmall">
+                    <button class="buybtn" x-on:click="buySmall()">
                         <img src="Images/Large.png" width="20" alt="">Buy</button>
                     <div>Small Pizza with 3 toppings. 1 meat topping. 3 or less other toppings.</div>
                 </div>
@@ -211,7 +210,7 @@
                 <img src="Images/Large.png" width="200">
                 <div>
                     <h3>R 199.90</h3>
-                    <button class="buybtn" x-on:click="buyLarge()">
+                    <button class="buybtn" x-on:click="buyLarge">
                         <img src="Images/Large.png" width="20" alt="">Buy</button>
                     <div>Large margeritha pizza with 3 toppings max. 3 meat toppings max. 3 or less other toppings.
                     </div>
